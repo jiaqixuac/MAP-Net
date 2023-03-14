@@ -361,7 +361,6 @@ class MAPNet(BaseModule):
         out_js = []
         img_01s = []
         aux_js, aux_is = [], []
-        # aux_ts, aux_as = [], []
 
         for i in range(0, T):
             # print(f"\ntime: {i}")
@@ -388,7 +387,6 @@ class MAPNet(BaseModule):
             # auxiliary output for the current timestep
             if self.training:
                 aux_j, aux_i = [], []
-                # aux_t, aux_a = [], []
                 for s in range(self.num_stages):
                     tmp_j = F.interpolate(feats['stage_j'][s], size=img.shape[2:], mode='bilinear')
                     out_j = img_01 + tmp_j  # residue
@@ -397,12 +395,8 @@ class MAPNet(BaseModule):
                     out_i = out_j * tmp_t + tmp_a * (1 - tmp_t)
                     aux_j.append(out_j[:, :, 0: h, 0: w])
                     aux_i.append(out_i[:, :, 0: h, 0: w])
-                    # aux_t.append(tmp_t[:, :, 0: h, 0: w])
-                    # aux_a.append(tmp_a)
                 aux_js.append(aux_j)
                 aux_is.append(aux_i)
-                # aux_ts.append(aux_t)
-                # aux_as.append(aux_a)
 
             # memory management
             feats['spatial_j'].pop(0)
@@ -428,17 +422,12 @@ class MAPNet(BaseModule):
             out['ref'] = ref  # b, T, 1, h, w, 3
         if self.training:
             aux_j, aux_i = [], []  # Js, Is
-            # aux_t, aux_a = [], []  # ts, As
             for s in range(self.num_stages):
                 aux_j.append(torch.stack([aux_js[i][s] for i in range(T)], dim=1))
                 aux_i.append(torch.stack([aux_is[i][s] for i in range(T)], dim=1))
-                # aux_t.append(torch.stack([aux_ts[i][s] for i in range(T)], dim=1))
-                # aux_a.append(torch.stack([aux_as[i][s] for i in range(T)], dim=1))
             out['aux_j'] = aux_j
             out['aux_i'] = aux_i
             out['img_01'] = torch.stack(img_01s, dim=1)
-            # out['t'] = aux_t
-            # out['a'] = aux_a
 
         return out
 
