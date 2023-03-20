@@ -1,8 +1,8 @@
-# [MAP-Net]()
+# [MAP-Net](https://arxiv.org/abs/2303.09757)
 
 PyTorch implementation of **MAP-Net**, from the following paper:
 
-[Video Dehazing via a Multi-Range Temporal Alignment Network with Physical Prior](). CVPR 2023.\
+[Video Dehazing via a Multi-Range Temporal Alignment Network with Physical Prior](https://arxiv.org/abs/2303.09757). CVPR 2023.\
 Jiaqi Xu, Xiaowei Hu, Lei Zhu, Qi Dou, Jifeng Dai, Yu Qiao, and Pheng-Ann Heng
 
 <p align="center">
