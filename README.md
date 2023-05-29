@@ -24,6 +24,7 @@ We construct a large-scale outdoor video dehazing benchmark dataset, **HazeWorld
 
 To prepare the HazeWorld dataset for experiments, please follow the [instructions](./docs/dataset_prepare.md).
 
+
 ## Installation
 
 This implementation is based on [MMEditing](https://github.com/open-mmlab/mmediting),
@@ -81,6 +82,9 @@ You can use the following command with 1 GPU to test your trained model `xxx.pth
 ```shell
 bash tools/dist_test.sh configs/dehazers/mapnet/mapnet_hazeworld.py xxx.pth 1
 ```
+
+You can find one model checkpoint trained on HazeWorld [here](https://drive.google.com/file/d/1sinGqjsL5eWlTOqYoa5Q3QW-NYEboh73/view?usp=share_link).
+
 
 ## Results
 
