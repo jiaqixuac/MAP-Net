@@ -83,7 +83,7 @@ You can use the following command with 1 GPU to test your trained model `xxx.pth
 bash tools/dist_test.sh configs/dehazers/mapnet/mapnet_hazeworld.py xxx.pth 1
 ```
 
-You can find one model checkpoint trained on HazeWorld [here](https://drive.google.com/file/d/1sinGqjsL5eWlTOqYoa5Q3QW-NYEboh73/view?usp=share_link).
+You can find one model checkpoint trained on HazeWorld [here](https://appsrv.cse.cuhk.edu.hk/~jqxu/models/mapnet_hazeworld_40k.pth).
 
 
 ## Results
